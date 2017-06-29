@@ -8,12 +8,11 @@ var twitter = new twitterAPI({
   access_token_secret: "7veEanjO5rwFlnlJMBWTmYwxRAq14QLiA9067vblxFgWJ"
 });
 
-export const getUser      = (screen_name)       => returnPromise('users/show', { screen_name: screen_name}, 'location');
-export const getTweets    = (user_id, count)    => returnPromise('statuses/user_timeline', { user_id, count });
-export const getTweet     = (id)                => returnPromise('statuses/show', { id });
-export const getRetweets  = (id, count)         => returnPromise('statuses/retweets', { id, count });
-export const searchTweets = (queryParams)       => returnPromise("search/tweets", Object.assign({result_type: 'recent'}, queryParams), 'statuses');
-
+export const getUser = (screen_name) => returnPromise('users/show', { screen_name: screen_name }, 'location');
+export const getTweets = (user_id, count) => returnPromise('statuses/user_timeline', { user_id, count });
+export const getTweet = (id) => returnPromise('statuses/show', { id });
+export const getRetweets = (id, count) => returnPromise('statuses/retweets', { id, count });
+export const searchTweets = (queryParams) => returnPromise("search/tweets", Object.assign({ result_type: 'recent' }, queryParams), 'statuses');
 
 const returnPromise = (endpoint, parameters, resultPath = null) => {
 
@@ -27,7 +26,7 @@ const returnPromise = (endpoint, parameters, resultPath = null) => {
           reject(error);
         }
         else {
-          resolve( resultPath !== null ? _.get(result, resultPath) : result );
+          resolve(resultPath !== null ? _.get(result, resultPath) : result);
         }
       }
     )

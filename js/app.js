@@ -7,14 +7,12 @@ import ReactDOM from 'react-dom';
 import Relay from 'react-relay';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-ReactDOM.render(
-          <MuiThemeProvider>
-
+ReactDOM.render(<MuiThemeProvider>
   <Relay.Renderer
     environment={Relay.Store}
     Container={App}
     queryConfig={new AppHomeRoute()}
-    render={({done, error, props}) => {
+    render={({ done, error, props }) => {
       if (props) {
         return <App {...props} />;
       } else {
@@ -22,8 +20,4 @@ ReactDOM.render(
       }
     }}
   />
-          </MuiThemeProvider>
-
-  ,
-  document.getElementById('root')
-);
+</MuiThemeProvider>, document.getElementById('root'))
